@@ -8,13 +8,26 @@
 </head>
 <body>
     <div id="root">
-        <h1 v-text="message"></h1>
+        <h1 v-text="upperCaseHeader"></h1>
+        <ul>
+            <li v-for="task in tasks" v-text="task"></li>
+        </ul>
     </div>
    <script>
        var app = new Vue({
            el: '#root',
            data: {
-               message: 'hello world'
+               message: 'hello world',
+               tasks: [
+                   'go to the store',
+                   'complete tutorials',
+                   'finish work'
+               ]
+           },
+           computed: {
+               upperCaseHeader() {
+                   return this.message.toUpperCase();
+               }
            }
        });
    </script>
