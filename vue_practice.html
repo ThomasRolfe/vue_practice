@@ -7,30 +7,40 @@
     <title>Title</title>
 </head>
 <body>
-    <div id="root">
-        <h1 v-text="upperCaseHeader"></h1>
-        <ul>
-            <li v-for="task in tasks" v-text="task"></li>
-        </ul>
-    </div>
-   <script>
-       var app = new Vue({
-           el: '#root',
-           data: {
-               message: 'hello world',
-               tasks: [
-                   'go to the store',
-                   'complete tutorials',
-                   'finish work'
-               ]
-           },
-           computed: {
-               upperCaseHeader() {
-                   return this.message.toUpperCase();
-               }
-           }
-       });
-   </script>
+<div id="root">
+    <ul>
+        <li  v-for="task in tasks" v-text="task"></li>
+    </ul>
+
+    <input type="text" id="input" v-model="task_input">
+    <p v-text="task_input"></p>
+    <button v-on:click="add_task">Add task</button>
+</div>
+<script>
+    var app = new Vue({
+        el: '#root',
+        data: {
+            message: 'hello world',
+            task_input: '',
+            tasks: [
+                'go to the store',
+                'complete tutorials',
+                'finish work'
+            ]
+        },
+        methods: {
+            add_task() {
+                 this.tasks.push(this.task_input);
+                 this.task_input = '';
+            }
+        },
+        computed: {
+            upperCaseHeader() {
+                return this.message.toUpperCase();
+            }
+        }
+    });
+</script>
 
 </body>
 </html>
