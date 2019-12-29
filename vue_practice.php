@@ -12,21 +12,11 @@
 
 <div id="root" class="container">
 
-    <?php
+    <modal v-if="showModal" @close="showModal = false">
+        lorem ipsum
+    </modal>
 
-    $messages = [
-        'hello world' => 'lorem ipsum',
-        'hello world 2' => 'lorem ipsum',
-        'hello world 3' => 'lorem ipsum'
-    ];
-
-    foreach ($messages as $title => $body) {
-        ?>
-        <message title="<?php echo $title; ?>" body="<?php echo $body; ?>"></message>
-        <?php
-    }
-
-    ?>
+    <button @click="showModal = true">Show modal</button>
 
 
 </div>
